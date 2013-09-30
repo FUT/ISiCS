@@ -2,10 +2,10 @@
 require 'pry'
 
 signal_with_noise = '111 101 101 001 101 100 000 100 100 101 011 111 010 100 110'.split ' '
-puts "signal with noise: #{signal_with_noise}"
+# puts "signal with noise: #{signal_with_noise}"
 
 words_with_noise = signal_with_noise.each_slice(5).to_a.map(&:reverse).map(&:join).map { |word| word.to_i(2) }
-puts "words with noise: #{ words_with_noise.map { |word| '%015b' % word } }"
+# puts "words with noise: #{ words_with_noise.map { |word| '%015b' % word } }"
 
 alphabet = {
   'а' => '000',
@@ -17,10 +17,10 @@ alphabet = {
   'у' => '110',
   'ц' => '111'
 }
-puts "alphabet: #{alphabet}"
+# puts "alphabet: #{alphabet}"
 
 dictionary = %w{армия мария мицар тарту рация марта марат тиара}
-puts "dictionary: #{dictionary}"
+# puts "dictionary: #{dictionary}"
 
 alphabet.values.permutation.each do |permutation|
   permutated_alphabet = Hash[alphabet.keys.zip permutation]
