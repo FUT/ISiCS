@@ -2,7 +2,6 @@
 require 'pry'
 
 signal_with_noise = '111 101 101 001 101 100 000 100 100 101 011 111 010 100 110'.split ' '
-# signal_with_noise = '000 101 101 001 101 010 110 010 011 001 001 000 000 100 001'.split ' '
 puts "signal with noise: #{signal_with_noise}"
 
 words_with_noise = signal_with_noise.each_slice(5).to_a.map(&:reverse).map(&:join).map { |word| word.to_i(2) }
@@ -29,7 +28,6 @@ alphabet.values.permutation.each do |permutation|
   binary_dictionary = dictionary.map { |word| word.gsub /./, permutated_alphabet }
 
   binary_dictionary.each do |first_word|
-  # ['мицар'].map { |word| word.gsub /./, permutated_alphabet }.each do |first_word|
     noise = words_with_noise.first ^ first_word.to_i(2)
 
     binary_words = words_with_noise.map { |word| '%015b' % (word ^ noise) }
