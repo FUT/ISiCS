@@ -31,6 +31,8 @@ alphabet.values.permutation.each do |permutation|
     noise = words_with_noise.first ^ first_word.to_i(2)
 
     binary_words = words_with_noise.map { |word| '%015b' % (word ^ noise) }
-    puts binary_words.map { |word| word.gsub /.../, permutated_alphabet_back }.join(' ') if (binary_dictionary & binary_words).size == 3
+    if (binary_dictionary & binary_words).size == 3
+      puts "words: #{ binary_words.map { |word| word.gsub /.../, permutated_alphabet_back }.join(' ') }   ||   alphabet: #{permutated_alphabet}   ||   noise: #{ '%015b' % noise }"
+    end
   end
 end
